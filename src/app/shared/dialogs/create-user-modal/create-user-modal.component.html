@@ -1,0 +1,47 @@
+<div class="p-8">
+    <h6 class="text-gray-600 text-2xl mb-3">Create New User</h6>
+    <form [formGroup]="userForm" (submit)="createUser()" action="" 
+                class="flex flex-col justify-center mx-auto">
+            <div class="flex flex-col mb-2.5">
+                <label for="name" class="font-medium text-base mb-0.5 text-gray-600">Name*</label>
+                <input name="name" id="name" type="text" formControlName="name" placeholder="Enter your name"
+                class="h-11 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+                <div *ngIf="userForm.controls['name']?.touched && userForm.controls['name']?.invalid">
+                    <p *ngIf="userForm.controls['name'].touched" class="text-red-600 text-sm">
+                        Name is required
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col mb-2.5">
+                <label for="email" class="font-medium text-base mb-0.5 text-gray-600">Email*</label>
+                <input name="email" id="email" type="email" formControlName="email" placeholder="Enter email address"
+                class="h-11 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+                <div *ngIf="userForm.controls['email']?.touched && userForm.controls['email']?.invalid">
+                    <p *ngIf="userForm.controls['email'].errors?.['required']" class="text-red-600 text-sm">
+                        Email is required
+                    </p>
+                    <p *ngIf="userForm.controls['email'].errors?.['email']" class="text-red-600 text-sm">
+                        Please enter a valid email address.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col mb-2.5">
+                <label for="role" class="font-medium text-base mb-0.5 text-gray-600">Role*</label>
+                <select name="role" id="role" formControlName="role" placeholder="Select a role"
+                class="h-11 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+                    <option value="Admin">Admin</option>
+                    <option value="Supervisor">Supervisor</option>
+                    <option value="Member">Member</option>
+                </select>
+                <div *ngIf="userForm.controls['role']?.touched && userForm.controls['role']?.invalid">
+                    <p *ngIf="userForm.controls['role'].errors?.['required']" class="text-red-600 text-sm">
+                        Role is required
+                    </p>
+                </div>
+            </div>
+            <button type="submit" [ngClass]="userForm.invalid ? 'bg-[#abcdef]': 'bg-[#23395d]'"
+                class="bg-[#23395d] text-white text-gray-600 border-[1px] border-solid text-sm rounded-lg py-2.5 px-8 my-5">
+                Create User
+            </button>
+    </form>
+</div>

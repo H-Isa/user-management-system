@@ -1,0 +1,73 @@
+<div class="mx-auto max-w-7xl p-6 lg:px-8">
+
+    <div class="first">
+      <h1 class="text-2xl font-bold tracking-tight text-gray-600 sm:text-2xl">Hi, admin</h1>
+      <p class="mt-0 mb-4 text-sm leading-5 text-gray-600 font-normal">Here’s an overview of your dashboard.</p>
+    </div>
+  
+    <div class="bg-white second">
+      <div class="mx-auto">
+        <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+          <div class="second-layout">
+            <dl class="mt-0 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-8 lg:gap-x-8">
+              <div class="border border-gray-200 rounded-lg shadow-sm p-4">
+                <dt class="font-semibold text-gray-900 text-sm leading-5">Total Users</dt>
+                <p class="text-3xl font-bold text-gray-900 mt-6" test-id = "total-users" >{{usersList.length}}</p>
+              </div>
+              <div class="border border-gray-200 rounded-lg shadow-sm p-4">
+                <dt class="font-semibold text-gray-900  text-sm leading-5">Total Admin</dt>
+                <p class="text-3xl font-bold text-gray-900 mt-6">{{roleCount.Admin}}</p>
+  
+              </div>
+  
+              <div class="border border-gray-200 rounded-lg shadow-sm p-4">
+                <dt class="font-semibold text-gray-900  text-sm leading-5">Total Supervisors</dt>
+                <p class="text-3xl font-bold text-gray-900 mt-6">{{roleCount.Supervisor}}</p>
+  
+              </div>
+  
+              <div class="border border-gray-200 rounded-lg shadow-sm p-4">
+                <dt class="font-semibold text-gray-900  text-sm leading-5">Total Members</dt>
+                <p class="text-3xl font-bold text-gray-900 mt-6">{{roleCount.Member}}</p>
+  
+              </div>
+  
+            </dl>
+  
+          <div class="mt-10">
+            <div class="border border-gray-200 rounded-lg shadow-sm">
+  
+              <div class="ml-6 ">
+                <h1 class="mt-6 text-center text-lg font-semibold tracking-tight text-gray-600 sm:text-lgl">Recent Activities</h1>
+                <p class="text-center text-gray-600 text-lg mt-10">No recent activities.</p>
+  
+               <div class="m-28"></div>
+              </div>
+  
+            </div>
+          </div>
+          </div>
+          <div class="grid grid-cols-1 grid-rows-1 gap-4 sm:gap-6 lg:gap-8 lg:ml-16">
+  
+            <div class="border border-gray-200 rounded-lg shadow-sm">
+            <div class="ml-6 ">
+              <h1 class="text-center mt-4 text-lg font-semibold text-gray-600 sm:text-lgl">Role Distribution</h1>
+             <div class="divide-y divide-gray-100 rounded-md  border-gray-200 mt-2">
+             </div>
+  
+             <div class="m-10" *ngIf="usersList.length > 0">
+                <app-pie-chart></app-pie-chart>
+            </div>
+
+            <div *ngIf="usersList.length === 0" class="flex flex-col justify-center items-center mt-14 pb-6">
+                <app-empty-state></app-empty-state>
+            </div>
+            </div>
+  
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
