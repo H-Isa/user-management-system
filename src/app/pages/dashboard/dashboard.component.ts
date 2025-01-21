@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsersService } from 'src/app/api/users.service';
 import { IRoleCount, IRolePercentages, IUser } from 'src/app/models/user';
 
@@ -19,8 +19,6 @@ export class DashboardComponent {
   ngOnInit() {
     this.usersList = this.userService.getUsersFromLocalStorage() 
     this.roleCount = this.userService.calculateRoleCounts()
-  }
- 
-  
+  }  
 }
 

@@ -19,17 +19,16 @@ export class CreateUserModalComponent {
   constructor(private userService : UsersService,
               private dialogRef: MatDialogRef<CreateUserModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
-
-        this.userForm = new FormGroup({
-        name: new FormControl("", [Validators.required]),
-        email: new FormControl("", [Validators.required, Validators.email,]),
-        role: new FormControl("", [Validators.required]),
-      })
-
     }
 
   ngOnInit(){
     this.usersList = this.userService.getUsersFromLocalStorage()
+
+    this.userForm = new FormGroup({
+      name: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required, Validators.email,]),
+      role: new FormControl("", [Validators.required]),
+    })
     
     if(this.data) {
         this.userForm.setValue({

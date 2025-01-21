@@ -7,7 +7,7 @@ export interface IUser {
 
 export interface IRolePercentages {
     y: string,
-    name: number
+    role: number
 }
 
 export interface IRoleCount  {

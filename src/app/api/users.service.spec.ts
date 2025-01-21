@@ -48,7 +48,7 @@ describe('UsersService', () => {
       {name:"supervisor", y:50}
     ]
     const actualPercentage =  service.calculateRolePercentages(users)
-    const adminPercentage =  actualPercentage.filter((item)=>item.name=='admin')[0]
+    const adminPercentage =  actualPercentage.filter((item)=>item.role=='admin')[0]
 
     expect(expectedPercentage[0].y).toBe(adminPercentage.y);
   });
