@@ -14,7 +14,11 @@
             </div>
             <div class="flex flex-col mb-2.5">
                 <label for="email" class="font-medium text-base mb-0.5 text-gray-600">Email*</label>
-                <input name="email" id="email" type="email" formControlName="email" placeholder="Enter email address"
+                <input *ngIf='!data' name="email" id="email" type="email" formControlName="email"
+                placeholder="Enter email address"
+                class="h-11 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
+                <input *ngIf='data' name="email" id="email" type="email" formControlName="email" readonly
+                placeholder="Enter email address"
                 class="h-11 bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow">
                 <div *ngIf="userForm.controls['email']?.touched && userForm.controls['email']?.invalid">
                     <p *ngIf="userForm.controls['email'].errors?.['required']" class="text-red-600 text-sm">
@@ -24,6 +28,9 @@
                         Please enter a valid email address.
                     </p>
                 </div>
+                <p *ngIf="emailExists" class="text-red-600 text-sm">
+                    Email already exists
+                </p>
             </div>
             <div class="flex flex-col mb-2.5">
                 <label for="role" class="font-medium text-base mb-0.5 text-gray-600">Role*</label>

@@ -10,8 +10,10 @@ import { IUser } from 'src/app/models/user';
   styleUrls: ['./create-user-modal.component.scss']
 })
 export class CreateUserModalComponent {
+
   usersList: IUser[] = []
   userForm!: FormGroup;
+  emailExists: boolean = false
   
 
   constructor(private userService : UsersService,
@@ -20,13 +22,15 @@ export class CreateUserModalComponent {
 
         this.userForm = new FormGroup({
         name: new FormControl("", [Validators.required]),
-        email: new FormControl("", [Validators.required, Validators.email]),
+        email: new FormControl("", [Validators.required, Validators.email,]),
         role: new FormControl("", [Validators.required]),
       })
-      
+
     }
 
   ngOnInit(){
+    this.usersList = this.userService.getUsersFromLocalStorage()
+    
     if(this.data) {
         this.userForm.setValue({
         name: this.data.name,
@@ -47,6 +51,16 @@ export class CreateUserModalComponent {
       email: this.userForm.value.email,
       role: this.userForm.value.role, 
     };
+
+    const existingEmail = this.usersList.some(u => u.email === user.email);
+
+    if (!this.data && existingEmail) {
+      this.emailExists = true 
+      setTimeout(() => {
+        this.emailExists = false 
+      }, 3000);
+      return
+    }
 
     this.userService.createUser(user)
 
