@@ -29,6 +29,9 @@ export class UserManagementComponent {
   }
 
   createUser(){
+    const buttonElement = document.activeElement as HTMLElement; // Get the currently focused element
+    buttonElement.blur();
+    
     const dialogRef = this.dialog.open(CreateUserModalComponent, {
       width: '100%',  
       maxWidth: '25rem', 
